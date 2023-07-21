@@ -1,0 +1,14 @@
+@import "./utilities/variables";
+
+:root {
+  color: $secondary-color;
+  background: $gradient;
+  font-family: $font-family-base;
+  margin: 0 auto;
+  text-align: center;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}

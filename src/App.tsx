@@ -1,7 +1,11 @@
-import "./App.css";
+import Navbar from "./components/Navbar";
 
 function App() {
-  return <h1>Movie Search</h1>;
+  return (
+    <div>
+      <Navbar />
+    </div>
+  );
 }
 
 export default App;
