@@ -7,6 +7,7 @@ import {
   HomeRounded,
 } from "@mui/icons-material";
 import { useEffect, useState } from "react";
+
 import styles from "./index.module.scss";
 
 function Navbar() {

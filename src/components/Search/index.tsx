@@ -2,7 +2,7 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useEffect, useState } from "react";
 import fetchAllMovies from "../../utilities/api";
-import Movie from "../../utilities/types/Movie";
+import MovieType from "../../utilities/types/MovieType";
 import MovieCard from "../MovieCard";
 
 import styles from "./index.module.scss";
@@ -11,7 +11,7 @@ const MOVIES_PER_PAGE = 3;
 
 function Search() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [movies, setMovies] = useState<Movie[]>([]);
+  const [movies, setMovies] = useState<MovieType[]>([]);
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);

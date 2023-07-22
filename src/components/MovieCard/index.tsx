@@ -1,14 +1,9 @@
 import placeholder from "../../assets/placeholder.png";
-
-import Movie from "../../utilities/types/Movie";
+import MovieCardType from "../../utilities/types/MovieCardType";
 
 import styles from "./index.module.scss";
 
-interface MovieCardProps {
-  movie: Movie;
-}
-
-function MovieCard({ movie }: MovieCardProps) {
+function MovieCard({ movie }: MovieCardType) {
   return (
     <div className={styles.movie_card}>
       <img

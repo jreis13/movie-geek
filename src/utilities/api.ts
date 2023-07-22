@@ -1,12 +1,10 @@
-// api.ts
-
-import Movie from "./types/Movie";
-import MovieSearchResult from "./types/MovieSearchResult";
+import MovieSearchResult from "./types/MovieSearchResultType";
+import MovieType from "./types/MovieType";
 
 async function fetchAllMovies(
   apiKey: string,
   searchTerm: string
-): Promise<Movie[]> {
+): Promise<MovieType[]> {
   try {
     const response = await fetch(
       `http://www.omdbapi.com/?apikey=${apiKey}&s=${searchTerm}`
