@@ -8,15 +8,15 @@ function MovieCard({ movie }: MovieCardType) {
     <div className={styles.movie_card}>
       <img
         className={styles.movie_card__poster}
-        src={movie.Poster || placeholder}
-        alt={movie.Title}
+        src={movie.poster || placeholder}
+        alt={movie.title}
         onError={(e) => {
           e.currentTarget.src = placeholder;
         }}
       />
       <div className={styles.movie_card__content}>
-        <h3>{movie.Title}</h3>
-        <p>{movie.Year}</p>
+        <h3>{movie.title}</h3>
+        <p>{movie.year}</p>
       </div>
     </div>
   );
