@@ -84,7 +84,7 @@ function SearchResults({ searchTerm }: SearchResultsProps) {
   const noMoviesFound = errorMessage === "No movies found.";
 
   return (
-    <div className={styles.search_results}>
+    <div>
       {errorMessage && !noMoviesFound && <p>{errorMessage}</p>}
       {isLoading ? (
         <div className={styles.movie_wrapper}>
