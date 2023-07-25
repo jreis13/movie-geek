@@ -2,9 +2,17 @@
 
 .movie_wrapper {
   width: 100%;
-  max-width: 800px;
+  max-width: 350px;
   margin: 0 auto;
   position: relative;
+
+  @media (min-width: $sm-screen) {
+    max-width: 600px;
+  }
+
+  @media (min-width: $lg-screen) {
+    max-width: 800px;
+  }
 }
 
 .movie_list {
@@ -19,7 +27,15 @@
 .movie_wrapper > p {
   display: flex;
   align-items: center;
-  height: 200px;
+  height: 150px;
+
+  @media (min-width: $sm-screen) {
+    height: 200px;
+  }
+
+  @media (min-width: $lg-screen) {
+    height: 250px;
+  }
 }
 
 .arrows_container {
@@ -27,9 +43,23 @@
   top: 50%;
   transform: translateY(-50%);
   width: 100%;
-  max-width: 800px;
   pointer-events: none;
   display: flex;
+  margin-top: 200px;
+
+  @media (min-width: $lg-screen) {
+    margin-top: 0;
+  }
+}
+
+.arrow_back_button {
+  left: 0;
+  justify-content: flex-start;
+}
+
+.arrow_forward_button {
+  right: 0;
+  justify-content: flex-end;
 }
 
 button {
@@ -41,4 +71,7 @@ button {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
 }

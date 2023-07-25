@@ -1,7 +1,8 @@
 @import "../../utilities/variables";
 
 .search_input {
-  width: 350px;
+  width: 100%;
+  max-width: 350px;
   height: 40px;
   padding: $size-sm $size-md;
   border-radius: $size-lg;
@@ -11,12 +12,16 @@
   color: $secondary-color;
   font-size: $font-size-base;
   outline: none;
-}
 
-.search_input::placeholder {
-  color: rgba(255, 255, 255, 0.8);
-}
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+  }
 
-.search_input:focus {
-  caret-color: $secondary-color;
+  &:focus {
+    caret-color: $secondary-color;
+  }
+
+  @media (min-width: $md-screen) {
+    max-width: 450px;
+  }
 }
