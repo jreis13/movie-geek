@@ -11,8 +11,6 @@ import MovieCard from "../MovieCard";
 
 import styles from "./index.module.scss";
 
-const MOVIES_PER_PAGE = 3;
-
 function SearchResults({ searchTerm }: SearchResultsType) {
   const [movies, setMovies] = useState<MovieType[]>([]);
   const [errorMessage, setErrorMessage] = useState("");
@@ -77,6 +75,8 @@ function SearchResults({ searchTerm }: SearchResultsType) {
     return dateB.getTime() - dateA.getTime();
   });
 
+  const MOVIES_PER_PAGE = window.innerWidth <= 768 ? 1 : 3;
+
   const startIndex = (currentPage - 1) * MOVIES_PER_PAGE;
   const endIndex = startIndex + MOVIES_PER_PAGE;
   const hasNextPage = sortedMovies.length > endIndex;
@@ -106,20 +106,18 @@ function SearchResults({ searchTerm }: SearchResultsType) {
         <div className={styles.arrows_container}>
           {hasPrevPage && (
             <button
-              className={styles.arrow_button}
+              className={styles.arrow_back_button}
               onClick={handlePrevPage}
               disabled={isLoading}
-              style={{ left: "-134px" }}
             >
               <ArrowBackIosIcon />
             </button>
           )}
           {hasNextPage && (
             <button
-              className={styles.arrow_button}
+              className={styles.arrow_forward_button}
               onClick={handleNextPage}
               disabled={isLoading}
-              style={{ right: "-134px" }}
             >
               <ArrowForwardIosIcon />
             </button>
