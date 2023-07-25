@@ -5,6 +5,7 @@ interface MovieType {
   poster: string;
   year: string;
   description: string;
+  rating: string;
 }
 
 export default MovieType;

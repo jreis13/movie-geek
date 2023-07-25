@@ -12,6 +12,7 @@ interface MovieResult {
   overview: string;
   poster_path: string;
   id: number;
+  vote_average: number;
 }
 
 export async function fetchAllMovies(searchTerm: string): Promise<MovieType[]> {
@@ -48,6 +49,8 @@ export async function fetchLatestMovies(): Promise<MovieType[]> {
         api_key: TMDB_API_KEY,
       },
     });
+
+    console.log(response.data.results);
 
     const movies: MovieType[] = response.data.results.map(
       (movieResult: MovieResult) => ({
@@ -86,6 +89,7 @@ export async function fetchMovieById(id: string): Promise<MovieType> {
         ? `${TMDB_IMAGE_BASE_URL}${movieResult.poster_path}`
         : "",
       description: movieResult.overview,
+      rating: movieResult.vote_average.toFixed(1),
     };
 
     return movie;

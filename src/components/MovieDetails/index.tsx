@@ -52,6 +52,7 @@ function MovieDetails() {
       <div className={styles.movie_details__info}>
         <h2>{movie.title}</h2>
         <p>{movie.year}</p>
+        <p>{movie.rating}</p>
         <p>{movie.description}</p>
       </div>
     </div>
