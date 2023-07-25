@@ -1,7 +1,8 @@
 @import "../../utilities/variables";
 
 .movie_card {
-  list-style: none;
+  color: $secondary-color;
+  text-decoration: none;
 }
 
 .movie_card__poster {

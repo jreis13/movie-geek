@@ -1,9 +1,10 @@
 interface MovieType {
   title: string;
   release_date: string;
-  id: number;
+  id: string;
   poster: string;
   year: string;
+  description: string;
 }
 
 export default MovieType;

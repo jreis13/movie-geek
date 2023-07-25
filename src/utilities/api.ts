@@ -66,3 +66,30 @@ export async function fetchLatestMovies(): Promise<MovieType[]> {
     throw new Error("Error fetching data from The Movie Database.");
   }
 }
+
+export async function fetchMovieById(id: string): Promise<MovieType> {
+  try {
+    const response = await axios.get(`${TMDB_API_BASE_URL}/movie/${id}`, {
+      params: {
+        api_key: TMDB_API_KEY,
+      },
+    });
+
+    const movieResult: MovieResult = response.data;
+
+    const movie: MovieType = {
+      title: movieResult.title,
+      release_date: movieResult.release_date,
+      year: movieResult.release_date.substring(0, 4),
+      id: movieResult.id.toString(),
+      poster: movieResult.poster_path
+        ? `${TMDB_IMAGE_BASE_URL}${movieResult.poster_path}`
+        : "",
+      description: movieResult.overview,
+    };
+
+    return movie;
+  } catch (error) {
+    throw new Error("Error fetching movie details from The Movie Database.");
+  }
+}

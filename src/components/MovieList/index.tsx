@@ -5,7 +5,7 @@ import SearchResults from "../SearchResults";
 
 import styles from "./index.module.scss";
 
-function Search() {
+function MovieList() {
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleSearch = (term: string) => {
@@ -20,4 +20,4 @@ function Search() {
   );
 }
 
-export default Search;
+export default MovieList;
