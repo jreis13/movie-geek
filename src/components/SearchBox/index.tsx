@@ -1,13 +1,12 @@
 import debounce from "lodash.debounce";
+
 import { useState } from "react";
+
+import SearchBoxType from "../../utilities/types/SearchBoxType";
 
 import styles from "./index.module.scss";
 
-interface SearchBoxProps {
-  onSearch: (searchTerm: string) => void;
-}
-
-function SearchBox({ onSearch }: SearchBoxProps) {
+function SearchBox({ onSearch }: SearchBoxType) {
   const [searchTerm, setSearchTerm] = useState("");
 
   const debouncedSearch = debounce(onSearch, 500);

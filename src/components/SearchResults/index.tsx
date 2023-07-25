@@ -1,19 +1,19 @@
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+
 import { useEffect, useState } from "react";
+
 import { fetchAllMovies, fetchLatestMovies } from "../../utilities/api";
 import MovieType from "../../utilities/types/MovieType";
+import SearchResultsType from "../../utilities/types/SearchResultsType";
+
 import MovieCard from "../MovieCard";
 
 import styles from "./index.module.scss";
 
 const MOVIES_PER_PAGE = 3;
 
-interface SearchResultsProps {
-  searchTerm: string;
-}
-
-function SearchResults({ searchTerm }: SearchResultsProps) {
+function SearchResults({ searchTerm }: SearchResultsType) {
   const [movies, setMovies] = useState<MovieType[]>([]);
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);

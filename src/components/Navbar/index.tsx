@@ -6,6 +6,7 @@ import {
   HomeOutlined,
   HomeRounded,
 } from "@mui/icons-material";
+
 import { useEffect, useState } from "react";
 
 import styles from "./index.module.scss";
@@ -42,7 +43,7 @@ function Navbar() {
     <nav className={styles.navbar}>
       <ul className={styles.navbar__list}>
         {navLinks.map((link) => (
-          <li className={styles.navbar__item} key={link.href}>
+          <li key={link.href}>
             <a className={styles.navbar__link} href={link.href}>
               {activeLink === link.href ? link.iconFilled : link.iconOutline}
             </a>
