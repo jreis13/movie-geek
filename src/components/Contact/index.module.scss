@@ -1,0 +1,16 @@
+@import "../../utilities/variables";
+
+.movie_card {
+  color: $secondary-color;
+  text-decoration: none;
+}
+
+.movie_card__poster {
+  height: 300px;
+  width: 225px;
+
+  @media (min-width: $lg-screen) {
+    height: 400px;
+    width: 300px;
+  }
+}
