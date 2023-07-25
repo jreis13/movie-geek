@@ -1,9 +1,7 @@
+@import "../../utilities/variables";
+
 .search_wrapper {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 24px;
-  border-radius: 20px;
-  backdrop-filter: blur(10px);
-  position: relative;
+  gap: $size-lg;
 }

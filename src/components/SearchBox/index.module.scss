@@ -1,13 +1,15 @@
+@import "../../utilities/variables";
+
 .search_input {
   width: 350px;
   height: 40px;
-  padding: 8px 16px;
-  border-radius: 20px;
+  padding: $size-sm $size-md;
+  border-radius: $size-lg;
   background-color: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(10px);
-  color: var(--secondary-color);
-  font-size: 16px;
+  color: $secondary-color;
+  font-size: $font-size-base;
   outline: none;
 }
 
@@ -16,5 +18,5 @@
 }
 
 .search_input:focus {
-  caret-color: var(--secondary-color);
+  caret-color: $secondary-color;
 }
