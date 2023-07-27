@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
-
 import placeholder from "../../assets/placeholder.png";
+
+import { Link } from "react-router-dom";
 
 import MovieCardType from "../../utilities/types/MovieCardType";
 
