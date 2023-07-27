@@ -3,7 +3,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import styles from "./index.module.scss";
 
-function Contact() {
+function Contacts() {
   return (
     <div>
       <p className={styles.contact__text}>
@@ -42,4 +42,4 @@ function Contact() {
   );
 }
 
-export default Contact;
+export default Contacts;
