@@ -87,14 +87,14 @@ function SearchResults({ searchTerm }: SearchResultsType) {
     <div>
       {errorMessage && !noMoviesFound && <p>{errorMessage}</p>}
       {isLoading ? (
-        <div className={styles.movie_wrapper}>
+        <div className={styles.search__results_wrapper}>
           <p>Loading movies...</p>
         </div>
       ) : (
-        <div className={styles.movie_wrapper}>
-          <ul className={styles.movie_list}>
+        <div className={styles.search__results_wrapper}>
+          <ul className={styles.search__results_list}>
             {sortedMovies.slice(startIndex, endIndex).map((movie) => (
-              <li key={movie.id} className={styles.movie_card}>
+              <li key={movie.id}>
                 <MovieCard movie={movie} />
               </li>
             ))}
@@ -103,10 +103,10 @@ function SearchResults({ searchTerm }: SearchResultsType) {
       )}
 
       {sortedMovies.length !== 0 && (
-        <div className={styles.arrows_container}>
+        <div className={styles.search__results_buttons}>
           {hasPrevPage && (
             <button
-              className={styles.arrow_back_button}
+              className={styles.search__results_back_button}
               onClick={handlePrevPage}
               disabled={isLoading}
             >
@@ -115,7 +115,7 @@ function SearchResults({ searchTerm }: SearchResultsType) {
           )}
           {hasNextPage && (
             <button
-              className={styles.arrow_forward_button}
+              className={styles.search__results_forward_button}
               onClick={handleNextPage}
               disabled={isLoading}
             >

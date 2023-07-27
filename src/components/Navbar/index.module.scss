@@ -5,7 +5,6 @@
   background-color: rgba(255, 255, 255, 0.1);
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   margin-bottom: $size-lg;
-  width: 100%;
 }
 
 .navbar__list {
@@ -13,6 +12,7 @@
   width: 100%;
   list-style: none;
   justify-content: space-around;
+  padding-inline-start: 0;
 }
 
 .navbar__link {

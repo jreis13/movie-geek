@@ -8,9 +8,9 @@ import styles from "./index.module.scss";
 
 function MovieCard({ movie }: MovieCardType) {
   return (
-    <Link to={`/movies/${movie.id}`} className={styles.movie_card}>
+    <Link to={`/movies/${movie.id}`} className={styles.movie__card}>
       <img
-        className={styles.movie_card__poster}
+        className={styles.movie__card_poster}
         src={movie.poster || placeholder}
         alt={movie.title}
         onError={(e) => {

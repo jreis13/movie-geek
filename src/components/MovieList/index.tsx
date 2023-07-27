@@ -13,7 +13,7 @@ function MovieList() {
   };
 
   return (
-    <div className={styles.search_wrapper}>
+    <div className={styles.movie__list_wrapper}>
       <SearchBox onSearch={handleSearch} />
       <SearchResults searchTerm={searchTerm} />
     </div>

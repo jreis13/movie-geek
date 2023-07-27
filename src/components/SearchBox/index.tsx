@@ -24,7 +24,7 @@ function SearchBox({ onSearch }: SearchBoxType) {
         value={searchTerm}
         onChange={handleChange}
         placeholder="Search"
-        className={styles.search_input}
+        className={styles.search__box_input}
       />
     </form>
   );

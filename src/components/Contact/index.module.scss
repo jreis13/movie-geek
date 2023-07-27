@@ -1,16 +1,16 @@
 @import "../../utilities/variables";
 
-.movie_card {
-  color: $secondary-color;
-  text-decoration: none;
+.contact__text {
+  margin: $size-xxl $size-lg;
+  text-align: center;
 }
 
-.movie_card__poster {
-  height: 300px;
-  width: 225px;
+.contact__logo_wrapper {
+  display: flex;
+  justify-content: space-evenly;
+}
 
-  @media (min-width: $lg-screen) {
-    height: 400px;
-    width: 300px;
-  }
+.contact__logo {
+  fill: $secondary-color;
+  color: $secondary-color;
 }

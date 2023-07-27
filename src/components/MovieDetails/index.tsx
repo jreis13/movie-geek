@@ -40,16 +40,16 @@ function MovieDetails() {
   }
 
   return (
-    <div className={styles.movie_details}>
+    <div>
       <img
-        className={styles.movie_details__poster}
+        className={styles.movie__details_poster}
         src={movie.poster || placeholder}
         alt={movie.title}
         onError={(e) => {
           e.currentTarget.src = placeholder;
         }}
       />
-      <div className={styles.movie_details__info}>
+      <div>
         <h2>{movie.title}</h2>
         <p>{movie.year}</p>
         <p>{movie.rating}</p>
