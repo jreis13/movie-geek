@@ -32,8 +32,8 @@ function Navbar() {
       iconFilled: <Favorite />,
     },
     {
-      href: "/contact",
-      text: "Contact",
+      href: "/contacts",
+      text: "Contacts",
       iconOutline: <EmailOutlined />,
       iconFilled: <Email />,
     },
