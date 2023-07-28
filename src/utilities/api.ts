@@ -50,8 +50,6 @@ export async function fetchLatestMovies(): Promise<MovieType[]> {
       },
     });
 
-    console.log(response.data.results);
-
     const movies: MovieType[] = response.data.results.map(
       (movieResult: MovieResult) => ({
         title: movieResult.title,
