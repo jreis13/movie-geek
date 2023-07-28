@@ -1,16 +1,22 @@
+import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import placeholder from "../../assets/placeholder.png";
 
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { fetchMovieById } from "../../utilities/api";
+import MovieDetailsType from "../../utilities/types/MovieDetailsType";
 import MovieType from "../../utilities/types/MovieType";
 
 import styles from "./index.module.scss";
 
-function MovieDetails() {
+function MovieDetails({
+  addToFavorites,
+  removeFromFavorites,
+  favorites,
+}: MovieDetailsType) {
   const { id } = useParams<{ id: string }>();
-  const [movie, setMovie] = useState<MovieType>();
+  const [movie, setMovie] = useState<MovieType | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -31,6 +37,18 @@ function MovieDetails() {
     fetchData();
   }, [id]);
 
+  const handleAddToFavorites = () => {
+    if (movie) {
+      addToFavorites(movie);
+    }
+  };
+
+  const handleRemoveFromFavorites = () => {
+    if (movie) {
+      removeFromFavorites(movie.id);
+    }
+  };
+
   if (isLoading) {
     return <p>Loading movie details...</p>;
   }
@@ -39,16 +57,31 @@ function MovieDetails() {
     return <p>Movie not found.</p>;
   }
 
+  const isFavorite = favorites.some(
+    (favMovie: MovieType) => favMovie.id === movie.id
+  );
+
   return (
-    <div>
-      <img
-        className={styles.movie__details_poster}
-        src={movie.poster || placeholder}
-        alt={movie.title}
-        onError={(e) => {
-          e.currentTarget.src = placeholder;
-        }}
-      />
+    <div className={styles.movie__details_wrapper}>
+      <div className={styles.movie__details_poster_wrapper}>
+        <img
+          className={styles.movie__details_poster}
+          src={movie.poster || placeholder}
+          alt={movie.title}
+          onError={(e) => {
+            e.currentTarget.src = placeholder;
+          }}
+        />
+        {isFavorite ? (
+          <button onClick={handleRemoveFromFavorites}>
+            <Favorite />
+          </button>
+        ) : (
+          <button onClick={handleAddToFavorites}>
+            <FavoriteBorder />
+          </button>
+        )}
+      </div>
       <div>
         <h2>{movie.title}</h2>
         <p>{movie.year}</p>

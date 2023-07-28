@@ -1,19 +1,17 @@
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-
 import { useEffect, useState } from "react";
 
 import { fetchAllMovies, fetchLatestMovies } from "../../utilities/api";
+
 import MovieType from "../../utilities/types/MovieType";
-import SearchResultsType from "../../utilities/types/SearchResultsType";
 
-import MovieCard from "../MovieCard";
+import MovieList from "../MovieList";
 
-import styles from "./index.module.scss";
+interface SearchResultsProps {
+  searchTerm: string;
+}
 
-function SearchResults({ searchTerm }: SearchResultsType) {
+function SearchResults({ searchTerm }: SearchResultsProps) {
   const [movies, setMovies] = useState<MovieType[]>([]);
-  const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -24,42 +22,20 @@ function SearchResults({ searchTerm }: SearchResultsType) {
         if (searchTerm.trim() !== "") {
           const fetchedMovies = await fetchAllMovies(searchTerm);
           setMovies(fetchedMovies);
-          setErrorMessage("");
         } else {
           const fetchedLatestMovies = await fetchLatestMovies();
           setMovies(fetchedLatestMovies);
-          setErrorMessage("");
         }
         setIsLoading(false);
       } catch (error: unknown) {
-        if (error instanceof Error) {
-          setMovies([]);
-          setErrorMessage(error.message);
-        } else {
-          console.error("Error fetching data:", error);
-          setMovies([]);
-          setErrorMessage("");
-        }
+        console.error("Error fetching data:", error);
+        setMovies([]);
         setIsLoading(false);
       }
     }
 
     fetchData();
   }, [searchTerm]);
-
-  useEffect(() => {
-    async function fetchLatestMovies() {
-      try {
-        const fetchedMovies = await fetchAllMovies("");
-        return fetchedMovies;
-      } catch (error: unknown) {
-        console.error("Error fetching latest movies:", error);
-        return [];
-      }
-    }
-
-    fetchLatestMovies();
-  }, []);
 
   const handleNextPage = () => {
     setCurrentPage((prevPage) => prevPage + 1);
@@ -69,62 +45,17 @@ function SearchResults({ searchTerm }: SearchResultsType) {
     setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
   };
 
-  const sortedMovies = movies.slice().sort((a, b) => {
-    const dateA = new Date(a.release_date);
-    const dateB = new Date(b.release_date);
-    return dateB.getTime() - dateA.getTime();
-  });
-
   const MOVIES_PER_PAGE = window.innerWidth <= 768 ? 1 : 3;
 
-  const startIndex = (currentPage - 1) * MOVIES_PER_PAGE;
-  const endIndex = startIndex + MOVIES_PER_PAGE;
-  const hasNextPage = sortedMovies.length > endIndex;
-  const hasPrevPage = currentPage > 1;
-  const noMoviesFound = errorMessage === "No movies found.";
-
   return (
-    <div>
-      {errorMessage && !noMoviesFound && <p>{errorMessage}</p>}
-      {isLoading ? (
-        <div className={styles.search__results_wrapper}>
-          <p>Loading movies...</p>
-        </div>
-      ) : (
-        <div className={styles.search__results_wrapper}>
-          <ul className={styles.search__results_list}>
-            {sortedMovies.slice(startIndex, endIndex).map((movie) => (
-              <li key={movie.id}>
-                <MovieCard movie={movie} />
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-
-      {sortedMovies.length !== 0 && (
-        <div className={styles.search__results_buttons}>
-          {hasPrevPage && (
-            <button
-              className={styles.search__results_back_button}
-              onClick={handlePrevPage}
-              disabled={isLoading}
-            >
-              <ArrowBackIosIcon />
-            </button>
-          )}
-          {hasNextPage && (
-            <button
-              className={styles.search__results_forward_button}
-              onClick={handleNextPage}
-              disabled={isLoading}
-            >
-              <ArrowForwardIosIcon />
-            </button>
-          )}
-        </div>
-      )}
-    </div>
+    <MovieList
+      movies={movies}
+      isLoading={isLoading}
+      currentPage={currentPage}
+      handleNextPage={handleNextPage}
+      handlePrevPage={handlePrevPage}
+      moviesPerPage={MOVIES_PER_PAGE}
+    />
   );
 }
 

@@ -1,7 +1,77 @@
 @import "../../utilities/variables";
 
-.movie__list_wrapper {
+.search__results_wrapper {
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto;
+  position: relative;
+
+  @media (min-width: $sm-screen) {
+    max-width: 600px;
+  }
+
+  @media (min-width: $lg-screen) {
+    max-width: 800px;
+  }
+
+  > p {
+    display: flex;
+    align-items: center;
+    height: 150px;
+
+    @media (min-width: $sm-screen) {
+      height: 200px;
+    }
+
+    @media (min-width: $lg-screen) {
+      height: 250px;
+    }
+  }
+}
+
+.search__results_list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
   display: flex;
-  flex-direction: column;
   gap: $size-lg;
+  justify-content: center;
+}
+
+.search__results_buttons {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  pointer-events: none;
+  display: flex;
+  margin-top: 200px;
+
+  button {
+    color: $secondary-color;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    pointer-events: auto;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+  }
+
+  @media (min-width: $lg-screen) {
+    margin-top: 0;
+  }
+}
+
+.search__results_back_button {
+  left: 0;
+  justify-content: flex-start;
+}
+
+.search__results_forward_button {
+  right: 0;
+  justify-content: flex-end;
 }

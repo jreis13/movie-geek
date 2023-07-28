@@ -1,5 +1,28 @@
 @import "../../utilities/variables";
 
+.movie__details_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.movie__details_poster_wrapper {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  position: relative;
+
+  button {
+    background: none;
+    border: none;
+    color: $secondary-color;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    padding: $size-sm;
+  }
+}
+
 .movie__details_poster {
   height: 400px;
   width: 300px;
