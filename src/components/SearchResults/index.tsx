@@ -3,14 +3,11 @@ import { useEffect, useState } from "react";
 import { fetchAllMovies, fetchLatestMovies } from "../../utilities/api";
 
 import MovieType from "../../utilities/types/MovieType";
+import SearchResultsType from "../../utilities/types/SearchResultsType";
 
 import MovieList from "../MovieList";
 
-interface SearchResultsProps {
-  searchTerm: string;
-}
-
-function SearchResults({ searchTerm }: SearchResultsProps) {
+function SearchResults({ searchTerm }: SearchResultsType) {
   const [movies, setMovies] = useState<MovieType[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
