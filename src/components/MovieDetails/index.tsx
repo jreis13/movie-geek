@@ -1,4 +1,9 @@
-import { Favorite, FavoriteBorder } from "@mui/icons-material";
+import {
+  CalendarMonth,
+  Favorite,
+  FavoriteBorder,
+  Star,
+} from "@mui/icons-material";
 import placeholder from "../../assets/placeholder.png";
 
 import { useEffect, useState } from "react";
@@ -82,11 +87,15 @@ function MovieDetails({
           </button>
         )}
       </div>
-      <div>
+      <div className={styles.movie__details_info}>
         <h2>{movie.title}</h2>
-        <p>{movie.year}</p>
-        <p>{movie.rating}</p>
-        <p>{movie.description}</p>
+        <div className={styles.movie__details_item}>
+          <CalendarMonth /> {movie.year}
+        </div>
+        <div className={styles.movie__details_item}>
+          <Star /> {movie.rating}
+        </div>
+        <p className={styles.movie__details_description}>{movie.description}</p>
       </div>
     </div>
   );

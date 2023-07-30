@@ -1,6 +1,7 @@
 @import "../../utilities/variables";
 
 .movie__card {
+  text-align: center;
   color: $secondary-color;
   text-decoration: none;
 }
@@ -8,6 +9,7 @@
 .movie__card_poster {
   height: 300px;
   width: 225px;
+  border-radius: $size-sm;
 
   @media (min-width: $lg-screen) {
     height: 400px;

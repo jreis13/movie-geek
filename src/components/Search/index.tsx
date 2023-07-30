@@ -13,7 +13,7 @@ function Search() {
   };
 
   return (
-    <div className={styles.search_wrapper}>
+    <div className={styles.search__wrapper}>
       <SearchBox onSearch={handleSearch} />
       <SearchResults searchTerm={searchTerm} />
     </div>

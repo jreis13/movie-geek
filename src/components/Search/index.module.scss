@@ -1,6 +1,7 @@
 @import "../../utilities/variables";
 
-.search_wrapper {
+.search__wrapper {
+  text-align: center;
   display: flex;
   flex-direction: column;
   gap: $size-lg;

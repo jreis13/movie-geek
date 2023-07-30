@@ -3,14 +3,9 @@
 .movie__details_wrapper {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-}
-
-.movie__details_poster_wrapper {
-  display: flex;
-  flex-direction: column;
-  width: fit-content;
-  position: relative;
+  gap: $size-md;
 
   button {
     background: none;
@@ -23,7 +18,40 @@
   }
 }
 
-.movie__details_poster {
-  height: 400px;
+.movie__details_poster_wrapper {
+  position: relative;
   width: 300px;
+}
+
+.movie__details_poster {
+  width: 100%;
+  height: auto;
+  border-radius: $size-sm;
+}
+
+.movie__details_info {
+  text-align: center;
+  border-radius: $size-lg;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  padding: 0 $size-md;
+}
+
+.movie__details_item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: $size-sm;
+  gap: $size-sm;
+}
+
+.movie__details_item svg {
+  color: #f0c040;
+}
+
+.movie__details_description {
+  max-width: 350px;
+
+  line-height: $size-lg;
 }
