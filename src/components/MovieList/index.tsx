@@ -30,7 +30,9 @@ function MovieList({
   return (
     <div>
       {noMoviesFound ? (
-        <p>No movies found.</p>
+        <div className={styles.search__results_wrapper}>
+          <p>No movies found.</p>
+        </div>
       ) : isLoading ? (
         <div className={styles.search__results_wrapper}>
           <p>Loading movies...</p>

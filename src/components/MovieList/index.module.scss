@@ -6,6 +6,9 @@
   position: relative;
   margin: 0 auto;
   padding: $size-lg 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   @media (min-width: $sm-screen) {
     max-width: 600px;

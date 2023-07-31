@@ -2,10 +2,10 @@
 
 .movie__details_wrapper {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: $size-md;
+  padding: $size-lg 0;
 
   button {
     background: none;
