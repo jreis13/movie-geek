@@ -15,7 +15,7 @@
   }
 
   @media (min-width: $lg-screen) {
-    padding: $size-xxl 0;
+    padding: $size-lg 0;
     max-width: 800px;
   }
 
@@ -74,7 +74,7 @@
   justify-content: flex-start;
 
   @media (min-width: $lg-screen) {
-    left: 200px;
+    left: 100px;
   }
 }
 
@@ -83,6 +83,6 @@
   justify-content: flex-end;
 
   @media (min-width: $lg-screen) {
-    right: 200px;
+    right: 100px;
   }
 }
