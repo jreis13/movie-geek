@@ -3,14 +3,16 @@
 .search__results_wrapper {
   width: 100%;
   max-width: 350px;
-  margin: 0 auto;
   position: relative;
+  margin: 0 auto;
+  padding: $size-lg 0;
 
   @media (min-width: $sm-screen) {
     max-width: 600px;
   }
 
   @media (min-width: $lg-screen) {
+    padding: $size-xxl 0;
     max-width: 800px;
   }
 
@@ -40,12 +42,10 @@
 
 .search__results_buttons {
   position: absolute;
-  top: 50%;
   transform: translateY(-50%);
   width: 100%;
   pointer-events: none;
   display: flex;
-  margin-top: 200px;
 
   button {
     color: $secondary-color;
@@ -54,7 +54,6 @@
     cursor: pointer;
     pointer-events: auto;
     position: absolute;
-    top: 50%;
     transform: translateY(-50%);
     width: 50px;
     height: 50px;
@@ -62,16 +61,25 @@
   }
 
   @media (min-width: $lg-screen) {
+    top: 50%;
     margin-top: 0;
   }
 }
 
 .search__results_back_button {
-  left: 0;
+  left: 20px;
   justify-content: flex-start;
+
+  @media (min-width: $lg-screen) {
+    left: 200px;
+  }
 }
 
 .search__results_forward_button {
-  right: 0;
+  right: 20px;
   justify-content: flex-end;
+
+  @media (min-width: $lg-screen) {
+    right: 200px;
+  }
 }
