@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy
 
 on:
   push:
@@ -6,24 +6,47 @@ on:
       - main
 
 jobs:
-  deploy:
+  build:
+    name: Build
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Checkout repo
+        uses: actions/checkout@v3
 
-      - name: Use Node.js 16.x
-        uses: actions/setup-node@v2
-        with:
-          node-version: 16.x
+      - name: Setup Node
+        uses: actions/setup-node@v3
+
+      - name: Set VITE_TMDB_API_KEY environment variable
+        run: echo "VITE_TMDB_API_KEY=${{ secrets.VITE_TMDB_API_KEY }}" >> $GITHUB_ENV
 
       - name: Install dependencies
-        run: yarn install
+        uses: bahmutov/npm-install@v1
 
-      - name: Build
-        run: yarn build
+      - name: Build project
+        run: npm run build
+
+      - name: Upload production-ready build files
+        uses: actions/upload-artifact@v3
+        with:
+          name: production-files
+          path: ./dist
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: production-files
+          path: ./dist
 
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
