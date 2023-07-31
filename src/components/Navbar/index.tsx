@@ -6,6 +6,7 @@ import {
   HomeOutlined,
   HomeRounded,
 } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 
 import { useEffect, useState } from "react";
 
@@ -20,19 +21,19 @@ function Navbar() {
 
   const navLinks = [
     {
-      href: "/",
+      to: "/",
       text: "Home",
       iconOutline: <HomeOutlined />,
       iconFilled: <HomeRounded />,
     },
     {
-      href: "/favorites",
+      to: "/favorites",
       text: "Favorites",
       iconOutline: <FavoriteBorder />,
       iconFilled: <Favorite />,
     },
     {
-      href: "/contacts",
+      to: "/contacts",
       text: "Contacts",
       iconOutline: <EmailOutlined />,
       iconFilled: <Email />,
@@ -43,10 +44,10 @@ function Navbar() {
     <nav className={styles.navbar}>
       <ul className={styles.navbar__list}>
         {navLinks.map((link) => (
-          <li key={link.href}>
-            <a className={styles.navbar__link} href={link.href}>
-              {activeLink === link.href ? link.iconFilled : link.iconOutline}
-            </a>
+          <li key={link.to}>
+            <Link to={link.to} className={styles.navbar__link}>
+              {activeLink === link.to ? link.iconFilled : link.iconOutline}
+            </Link>
           </li>
         ))}
       </ul>
