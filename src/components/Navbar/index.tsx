@@ -6,18 +6,12 @@ import {
   HomeOutlined,
   HomeRounded,
 } from "@mui/icons-material";
-import { Link } from "react-router-dom";
-
-import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 import styles from "./index.module.scss";
 
 function Navbar() {
-  const [activeLink, setActiveLink] = useState("/");
-
-  useEffect(() => {
-    setActiveLink(window.location.pathname);
-  }, []);
+  const location = useLocation();
 
   const navLinks = [
     {
@@ -46,7 +40,9 @@ function Navbar() {
         {navLinks.map((link) => (
           <li key={link.to}>
             <Link to={link.to} className={styles.navbar__link}>
-              {activeLink === link.to ? link.iconFilled : link.iconOutline}
+              {location.pathname === link.to
+                ? link.iconFilled
+                : link.iconOutline}
             </Link>
           </li>
         ))}
